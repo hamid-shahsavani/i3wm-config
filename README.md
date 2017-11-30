@@ -3,4 +3,4 @@
 
  _**background.jpg ---> ~/.i3/background.jpg**_
  
- ـ**config ---> ~/.i3/config**ـ
+ ـ**config ---> ~/.i3/config**_
