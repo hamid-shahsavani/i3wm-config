@@ -1,4 +1,6 @@
-![alt text](yon.ir/v4v4g)
+
+![Alt text](yon.ir/v4v4g?raw=true "Title")
+
 -----------------------------------------------------------
 |                                                         |
 |                        i3blocks                         |
