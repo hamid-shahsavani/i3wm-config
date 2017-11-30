@@ -325,5 +325,5 @@ exec conky -c ~/.i3/conkyrc
 
 # set background
 exec_always exec feh --bg-fill ~/.i3/background.jpg
-
+#-------------------
 
