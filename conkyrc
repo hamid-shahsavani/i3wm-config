@@ -81,3 +81,4 @@ ${offset 190}${color5}swap ${swapbar 4} \
 ${offset 190}${color3}/ ${fs_bar 4 /} \
 ${offset 150}${color7}/home ${fs_bar 4 /home} \
 ]]
+#
