@@ -8,3 +8,4 @@
 **conkyrc ---> ~/.i3/conkyrc**
 
 **i3blocks.conf ---> ~/.i3/i3blocks.conf**
+#
