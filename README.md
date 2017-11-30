@@ -4,3 +4,7 @@
  **background.jpg ---> ~/.i3/background.jpg**
  
  **config ---> ~/.i3/config**
+ 
+**conkyrc ---> ~/.i3/conkyrc**
+
+**i3blocks.conf ---> ~/.i3/i3blocks.conf**
