@@ -25,4 +25,4 @@
 |                 ~/.i3/background.jpg                    | 
 |                                                         |
 -----------------------------------------------------------
-**background.jpg ــ<---ــ ~/.i3/background.jpg**
+**background.jpg ـ<---ـ ~/.i3/background.jpg**
