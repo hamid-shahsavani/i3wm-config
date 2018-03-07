@@ -2,11 +2,11 @@
 
 **_screenshot 1_**
 
-![](http://imgurl.ir/uploads/q09583_screenshot-2018-01-0213-27-41.jpg?raw=true "Title")
+![](http://s9.picofile.com/file/8321170026/i3wm_2.png?raw=true "Title")
 
 **_screenshot 2_**
 
-![](http://s8.picofile.com/file/8317507792/screenshot_2018_01_2322_43_39.jpg?raw=true "Title")
+![](http://s8.picofile.com/file/8321170042/i3wm_1.png?raw=true "Title")
 
 **_screenshot 3_**
 
