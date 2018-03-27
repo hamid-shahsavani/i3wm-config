@@ -1,0 +1,292 @@
+# ------------------------------------------------------------- i3 gaps -----------------------------------------------------------
+gaps inner 10
+smart_gaps true
+# ------------------------------------------------------------- i3 gaps -----------------------------------------------------------
+set $mod Mod4
+hide_edge_borders both
+force_display_urgency_hint 0
+workspace_auto_back_and_forth yes
+new_window pixel 3
+font pango:Cantarell 8, Siji 10
+
+#100%: FF - 95%: F2 - 90%: E6 - 85%: D9 - 80%: CC - 75%: BF - 70%: B3 - 65%: A6 - 60%: 99 - 55%: 8C - 50%: 80 - 45%: 73 - 40%: 66 - 35%: 59 - 30%: 4D - 25%: 40 - 20%: 33 - 15%: 26 - 10%: 1A - 5%: 0D - 0%: 00
+
+# Nord
+set $branco1				#d8dee9
+set $branco2				#e5e9f0
+set $branco3				#eceff4
+set $cinza1					#2e3440
+set $cinza2					#3b4252
+set $cinza3					#434c5e
+set $cinza4					#4c566a
+set $verde					#8fbcbb
+set $verde2					#a3be8c
+set $azul					#88c0d0
+set $azul2					#81a1c1
+set $azul3					#5e81ac
+set $vermelho				#bf616a
+set $laranja				#d08770
+set $amarelo				#ebcb8b
+set $roxo					#b48ead
+
+set $branco                 #ffffff
+set $preto					#000000
+set $cinza					#8c8b8b
+set $fundo                  #1b1b1b
+set $fundo-inativo          #222222
+set $texto                  #ffffff
+set $texto-ativo            #3465a4
+set $texto-inativo          #888888
+set $texto-urgente          #cc5252
+set $fundo-urgente          #900000
+set $indicador              #00ff00
+set $separador              #666666
+set $borda					#5b6365
+set $semitransparente		#00000073
+set $transparente			#00000000
+
+#                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
+client.focused          $borda				$fundo-inativo  $texto                  $borda					$borda
+client.unfocused        $borda				$fundo-inativo  $texto-inativo			$fundo-inativo			$borda
+client.focused_inactive $borda				$fundo-inativo  $texto-inativo			$fundo-inativo			$borda
+client.urgent           $borda				$fundo-inativo  $texto-urgente          $fundo-inativo			$borda
+
+floating_modifier $mod
+
+bindsym $mod+Shift+q kill
+bindsym $mod+q kill
+
+bindsym $mod+d exec rofi -show drun
+bindsym $mod+g exec --no-startup-id echo "" | rofi -theme ~/.local/share/rofi/themes/sistematico-dark.rasi -dmenu -p "Google: " -bw 0 -lines 1 -separator-style none -location 0 -width 250 -hide-scrollbar -padding 5 | xargs -I{} xdg-open https://www.google.com.br/search?q={}
+bindsym $mod+Shift+g exec --no-startup-id echo "" | rofi -theme ~/.local/share/rofi/themes/sistematico-dark.rasi -dmenu -p "DuckDuckGo: " -bw 0 -lines 1 -separator-style none -location 0 -width 250 -hide-scrollbar -padding 5 | xargs -I{} xdg-open https://duckduckgo.com/?q={}
+bindsym --release Mod1+g exec --no-startup-id exec ~/.config/rofi/scripts/git
+bindsym $mod+Shift+x exec i3lock-fancy -f "Iosevka-Thin" -t "Arch Linux" -p -g -- scrot -z | amixer -q -D pulse sset Master mute
+
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- unmute
+
+#bindsym Print exec --no-startup-id ~/bin/screenshot.sh
+#bindsym Control+Print exec --no-startup-id ~/bin/screenshot.sh -w
+#bindsym --release Mod1+Sys_Req exec --no-startup-id ~/bin/screenshot.sh -s
+#bindsym $mod+Print exec --no-startup-id ~/bin/screenshot.sh -d
+#bindsym $mod+Shift+Print exec --no-startup-id ~/bin/screenshot.sh -g
+
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+Shift+c move position center
+
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+Shift+a focus parent
+bindsym $mod+Shift+d focus child
+# -------------------------------------------------------------------------------------------------
+# move to workspaces
+bindsym $mod+Control+Right workspace next
+bindsym $mod+Control+Left workspace prev
+#---------------------------------------------------------------------------------------------------------------
+#bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+for_window [urgent="latest"] focus
+
+# move [absolute] position <pos_x> [px] <pos_y> [px]
+# 1920 x 1080
+# move position center
+
+for_window [window_role="pop-up"] floating enable, move position center
+for_window [window_role="bubble"] floating enable, move position center
+for_window [window_role="task_dialog"] floating enable, move position center
+for_window [window_role="Preferences"] floating enable, move position center
+
+for_window [window_type="dialog"] floating enable, move position center
+for_window [window_type="menu"] floating enable, move position center
+
+for_window [class="(mpv|Catfish|Engrampa|File-roller|Notes|Agave|Viewnior|Pavucontrol|Galculator)"] floating enable, move position center
+for_window [class="Lxtask" title="Gerenciador de tarefas"] floating enable, resize set 800 px 600 px, move position center
+for_window [class="^VirtualBox" title="*Executando*"] floating enable
+for_window [class="^etcher-electron"] floating enable
+for_window [class="^Skype"] floating enable
+for_window [title="^Governo do Estado de Mato Grosso do Sul"] floating enable
+for_window [title="^Mail do iCloud - Enc"] floating enable
+for_window [title="Filtros de mensagens"] floating enable
+for_window [title="Preferências do Thunderbird"] floating enable
+for_window [title="Biblioteca"] floating enable, move position center
+for_window [title="Library"] floating enable, move position center
+for_window [title="^DownThemAll"] floating enable
+for_window [title="DownThemAll!$"] move window to scratchpad
+for_window [title="Mail do iCloud - Chromium"] floating enable, move position center
+for_window [title="i3 Wallpaper"] floating enable, move position center
+for_window [title="About Mozilla Firefox"] floating enable, move position center
+for_window [title="Sobre o Mozilla Firefox"] floating enable, move position center
+for_window [title="Lista de amigos"] floating enable, move absolute position 1667 px 0 px, resize set 250 px 400 px
+
+
+#bindsym $mod+c exec "i3-nagbar -t warning -m 'Editar arquivos do i3' \
+#-b 'config' 'i3-msg exec pluma ~/.config/i3/config' \
+#-b 'i3blocks' 'i3-msg exec pluma ~/.config/i3/blocks' \
+#-b 'dunst' 'i3-msg exec pluma ~/.config/i3/dunstrc' \
+#-b 'compton' 'i3-msg exec pluma ~/.config/compton.conf' \
+#-b 'rofi' 'i3-msg exec pluma ~/.config/rofi/config' \
+#-b '.Xresources' 'i3-msg exec pluma ~/.Xresources' \
+#-b '.xinitrc' 'i3-msg exec pluma ~/.config/.xinitrc' \
+#-b '.Xdefaults' 'i3-msg exec pluma ~/.config/.Xdefaults' \
+#-b 'apps' 'i3-msg exec pluma ~/.config/rofi/scripts/apps'"
+
+bindsym $mod+c exec ~/.config/rofi/scripts/configs
+bindsym $mod+a exec ~/.config/rofi/scripts/apps
+
+mode "[s]air, [d]esligar, [r]einiciar, [s]uspender" {
+	bindsym s exec i3-msg exit
+	bindsym d exec systemctl poweroff
+	bindsym r exec systemctl reboot
+	bindsym s exec systemctl suspend
+
+	bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Mod1+e mode "[s]air, [d]esligar, [r]einiciar, [s]uspender"
+
+#bindsym $mod+Shift+e exec ~/.config/rofi/scripts/power
+
+mode "resize" {
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+bar {
+	font pango:Hack, FontAwesome 10
+	tray_output none
+	status_command i3blocks -c ~/.config/i3/i3blocks.conf
+	i3bar_command i3bar -t
+	position top
+	separator_symbol "■"
+	strip_workspace_numbers yes
+	colors {
+		statusline		$cinza
+		background		$transparente
+		separator		$cinza
+
+		focused_workspace	$transparente	$transparente	$branco
+		inactive_workspace	$transparente	$transparente	$cinza
+		urgent_workspace	$transparente	$transparente	$texto-urgente		
+    }
+}
+# $transparente
+exec --no-startup-id ~/bin/wallpaper.sh -r
+exec --no-startup-id compton -b
+#exec --no-startup-id conky
+exec --no-startup-id dunst
+exec --no-startup-id clipit
+exec --no-startup-id sudo headsetcontrol 64
+exec --no-startup-id xautolock.sh
+exec --no-startup-id xset r rate 300 75
+exec --no-startup-id thunar --daemon
+exec --no-startup-id dropbox
+#exec --no-startup-id notes
+################################################### ME CONFIG #############################################################
+# keyboard ir,en
+exec_always exec setxkbmap -option grp:switch,grp:alt_shift_toggle us,ir ; notify-send 'change keyboard'
+
+# screenshot
+bindsym --release Print exec flameshot gui
+# ------------------------------------------------------------------------------------------------------------------------------------------------
+set $e1 ""
+assign [class="Wine"] $e1 
+
+set $e2 ""
+assign [class="Rhythmbox"] $e2
+
+set $e3 ""
+assign [class="mpv"] $e3
+# ================================================================================================================================================
+
+# open termite  | f1
+bindsym 0xffbe exec termite
+
+set $f1 ""
+assign [class="(Termite)"] $f1
+
+# open telegram | f2
+bindsym 0xffbf  exec telegram-desktop
+set $f2 ""
+assign [class="(TelegramDesktop)"] $f2
+
+# open firefox  | f3
+bindsym 0xffc0  exec firefox
+set $f3 ""
+assign [class="(Firefox)"] $f3
+
+# open pcmanfm  | f4
+bindsym 0xffc1 exec pcmanfm
+set $f4 ""
+assign [class="(Pcmanfm)"] $f4
+
+# open subl3    | f5
+bindsym 0xffc2 exec subl3
+set $f5 ""
+assign [class="(Subl3)"] $f5
+
+# open xdm| f6
+#bindsym 0xffc3 exec java -jar /opt/xdman/xdman.jar ; exec notify-send 'xdm runing...'
+#set $f6 ""
+#assign [class="(XDM)"] $f6
+
+# open stacer | f7
+#bindsym 0xffc4 exec stacer ; exec notify-send 'stacer runing...'
+#set $f7 ""
+#assign [class="(stacer)"] $f7
+
+# open vncviewer | f8
+bindsym 0xffc5 exec vncviewer
+set $f8 ""
+assign [class="(vncviewer)"] $f8
+# ------------------------------------------------------------------------------------------------------------------------------------------------
+# start conky
+exec conky -c ~/.config/i3/conkyrc
+# ------------------------------------------------------------------------------------------------------------------------------------------------
+# set background
+exec_always exec feh --bg-fill ~/.config/i3/background.png
